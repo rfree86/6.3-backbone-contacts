@@ -10,26 +10,9 @@ var CreateListView = Backbone.View.extend({
   },
 
   render: function(){
-    this.$el.html(this.template());
+    this.$el.html(this.template(this.collection.toJSON()));
     return this;
   },
-
-  createBook: function(e) {
-    e.preventDefault();
-    App.contact.on('sync', function(){
-      App.contact.fetch(this.serializeForm())
-    });
-  },
-
-  serializeForm: function() {
-    var result = {};
-    var inputs = this.$el.serializeArray();
-    inputs.forEach(function(input) {
-      result[input.name] = input.value;
-
-    });
-    return result;
-  }
 
 });
 

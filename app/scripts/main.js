@@ -10,6 +10,13 @@ $(document).ready(function(){
   window.createContactView = new CreateContactView();
   $('#container').append(createContactView.render().el);
 
-  window.createListView = new CreateListView();
-  $('#container').append(createListView.render().el);
+
+
+  var listview = new CreateListView({
+    collection: App.contact
+  });
+  listview.collection.fetch();
+  listview.collection.on('sync', function(e){
+  $('#container').append(listview.render().el);
+});
 });
