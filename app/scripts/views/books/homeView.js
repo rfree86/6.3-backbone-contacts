@@ -1,9 +1,9 @@
-var CreateContactView = Backbone.View.extend({
+var CreateListView = Backbone.View.extend({
 
-  tagName: 'form',
-  className: 'create-contact',
+  tagName: 'ul',
+  className: 'create-list',
 
-  template: JST['books/create'],
+  template: JST['books/list'],
 
   events: {
     'submit': 'createBook'
@@ -16,7 +16,9 @@ var CreateContactView = Backbone.View.extend({
 
   createBook: function(e) {
     e.preventDefault();
-    App.contact.create(this.serializeForm());
+    App.contact.on('sync', function(){
+      App.contact.fetch(this.serializeForm())
+    });
   },
 
   serializeForm: function() {
@@ -31,4 +33,4 @@ var CreateContactView = Backbone.View.extend({
 
 });
 
-export default CreateContactView;
+export default CreateListView;

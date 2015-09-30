@@ -1,12 +1,15 @@
-import BooksCollection from 'models/books-collection';
-import CreateBookView from 'views/books/create';
+import ContactsCollection from 'models/contactCollection';
+import CreateContactView from 'views/books/create';
+import CreateListView from 'views/books/homeView';
 
 window.App = {};
 
 $(document).ready(function(){
-  App.books = new BooksCollection();
+  App.contact = new ContactsCollection();
 
-  window.createBookView = new CreateBookView();
-  $('#container').append(createBookView.render().el);
-  
+  window.createContactView = new CreateContactView();
+  $('#container').append(createContactView.render().el);
+
+  window.createListView = new CreateListView();
+  $('#container').append(createListView.render().el);
 });
